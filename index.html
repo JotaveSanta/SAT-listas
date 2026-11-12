@@ -31,6 +31,34 @@ h1{font-size:clamp(34px,7vw,58px);font-weight:700}
 ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px}
 li{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:6px;padding:14px 16px}
 li small{display:block;color:var(--mute);font-size:15px}
+.cron{width:100%;border-collapse:separate;border-spacing:0 8px;margin-top:20px}
+.cron th{text-align:center;font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-size:26px;width:110px}
+.cron th:first-child{text-align:left;width:auto}
+.cron td{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 12px;height:56px}
+.cron td:first-child{border-left:6px solid var(--c);border-radius:6px 0 0 6px}
+.cron td:last-child{border-right:1px solid var(--line);border-radius:0 6px 6px 0}
+.cron td.on{background:var(--c);color:#17202c;text-align:center;font-weight:500;font-size:15px}
+.cron td.on+td.on{border-left:0}
+.cron td small{display:block;color:var(--mute);font-size:15px}
+.sr{position:absolute;left:-9999px}
+@media (max-width:520px){.cron th{width:64px;font-size:22px}.cron td{padding:10px 8px}}
+@media (min-width:1000px){
+body{font-size:28px}
+main{max-width:1500px;padding:44px 56px 72px}
+h1{font-size:88px}
+.sub{font-size:30px;margin-bottom:40px}
+.tiles{grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:22px}
+.tile{min-height:280px;padding:32px}
+.tile h2{font-size:60px}
+.panel h2{font-size:88px}
+.back{font-size:24px;padding:12px 22px;margin-bottom:28px}
+ul{gap:16px;margin-top:36px}
+li{padding:22px 28px}
+li small{font-size:23px}
+.cron th{font-size:42px;width:180px}
+.cron td{height:84px;padding:20px 24px}
+.cron td small,.cron td.on{font-size:23px}
+}
 .hide{display:none}
 </style>
 </head>
@@ -43,6 +71,8 @@ li small{display:block;color:var(--mute);font-size:15px}
 <button class="tile" style="--c:var(--c1)" data-go="automacao"><h2>Automação</h2><span>8 itens</span></button>
 <button class="tile" style="--c:var(--c3)" data-go="eletrica"><h2>Elétrica</h2><span>4 itens</span></button>
 <button class="tile" style="--c:var(--c2)" data-go="mecanica"><h2>Mecânica</h2><span>5 itens</span></button>
+<button class="tile" style="--c:#2f9e6e" data-go="cronograma"><h2>Cronograma</h2><span>6 etapas</span></button>
+<button class="tile" style="--c:#7c4dff" data-go="resultados"><h2>Resultados</h2><span>8 itens até agora</span></button>
 </div>
 </div>
 
@@ -82,6 +112,36 @@ li small{display:block;color:var(--mute);font-size:15px}
 <li>Base / suporte do robô e dos sensores<small>Feitos em MDF</small></li>
 <li>Peças impressas em 3D<small>Suportes e fixações</small></li>
 </ul>
+</section>
+<section class="panel" id="resultados" style="--c:#7c4dff">
+<button class="back" data-go="">← Voltar</button>
+<h2>Resultados até agora</h2>
+<ul>
+<li>Esteira funcionando</li>
+<li>Sensor de cor funcionando</li>
+<li>RFID identifica os adesivos</li>
+<li>Sensor ultrassônico reconhece a distância</li>
+<li>Arduinos funcionando</li>
+<li>Caixa montada</li>
+<li>Todos os sensores com suporte</li>
+<li>Peças prontas</li>
+</ul>
+</section>
+
+<section class="panel" id="cronograma" style="--c:#2f9e6e">
+<button class="back" data-go="">← Voltar</button>
+<h2>Cronograma</h2>
+<table class="cron">
+<thead><tr><th scope="col">Etapa</th><th scope="col">Out</th><th scope="col">Nov</th></tr></thead>
+<tbody>
+<tr><td>Documentação do projeto<small>Iniciada em outubro, em andamento</small></td><td class="on"><span class="sr">Sim</span></td><td class="on"><span class="sr">Sim</span></td></tr>
+<tr><td>Componentes mecânicos<small>Esteira de LEGO, MDF e peças 3D</small></td><td class="on"><span class="sr">Sim</span></td><td></td></tr>
+<tr><td>Usinagem das peças de nylon</td><td class="on"><span class="sr">Sim</span></td><td></td></tr>
+<tr><td>Componentes elétricos<small>RFID, sensor, CLP, IHM, painel e pilhas</small></td><td></td><td class="on"><span class="sr">Sim</span></td></tr>
+<tr><td>Programação e integração</td><td></td><td class="on"><span class="sr">Sim</span></td></tr>
+<tr><td>Validação do protótipo<small>Testes</small></td><td></td><td class="on"><span class="sr">Sim</span></td></tr>
+</tbody>
+</table>
 </section>
 </main>
 <script>
